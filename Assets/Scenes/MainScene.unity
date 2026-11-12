@@ -558,7 +558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8409ecb64115264d979841d77aa6418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIHandler
-  CurrentHealth: 0.5
+  displayTime: 4
 --- !u!1001 &805482593
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5743,6 +5743,114 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d1ed40f4d735014d948e02748dde7d5, type: 3}
+--- !u!1001 &3959125595428904743
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 322246832519155862, guid: 01cf9987ae2a4b04fbba85a4f3ca21ae,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 322246832519155862, guid: 01cf9987ae2a4b04fbba85a4f3ca21ae,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 322246832519155862, guid: 01cf9987ae2a4b04fbba85a4f3ca21ae,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 322246832519155862, guid: 01cf9987ae2a4b04fbba85a4f3ca21ae,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 1225322228739479155, guid: 01cf9987ae2a4b04fbba85a4f3ca21ae,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1225322228739479155, guid: 01cf9987ae2a4b04fbba85a4f3ca21ae,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1225322228739479155, guid: 01cf9987ae2a4b04fbba85a4f3ca21ae,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1225322228739479155, guid: 01cf9987ae2a4b04fbba85a4f3ca21ae,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1225322228739479155, guid: 01cf9987ae2a4b04fbba85a4f3ca21ae,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1225322228739479155, guid: 01cf9987ae2a4b04fbba85a4f3ca21ae,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1225322228739479155, guid: 01cf9987ae2a4b04fbba85a4f3ca21ae,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1225322228739479155, guid: 01cf9987ae2a4b04fbba85a4f3ca21ae,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1225322228739479155, guid: 01cf9987ae2a4b04fbba85a4f3ca21ae,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1225322228739479155, guid: 01cf9987ae2a4b04fbba85a4f3ca21ae,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2578986823830565162, guid: 01cf9987ae2a4b04fbba85a4f3ca21ae,
+        type: 3}
+      propertyPath: m_Name
+      value: NPC
+      objectReference: {fileID: 0}
+    - target: {fileID: 5196855735028592576, guid: 01cf9987ae2a4b04fbba85a4f3ca21ae,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1.0092854
+      objectReference: {fileID: 0}
+    - target: {fileID: 5196855735028592576, guid: 01cf9987ae2a4b04fbba85a4f3ca21ae,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.1295433
+      objectReference: {fileID: 0}
+    - target: {fileID: 5196855735028592576, guid: 01cf9987ae2a4b04fbba85a4f3ca21ae,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: -0.009649396
+      objectReference: {fileID: 0}
+    - target: {fileID: 5196855735028592576, guid: 01cf9987ae2a4b04fbba85a4f3ca21ae,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.28856167
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 01cf9987ae2a4b04fbba85a4f3ca21ae, type: 3}
 --- !u!1001 &5294514651220101983
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5869,6 +5977,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8081119564570743781, guid: 7f22f42f0c3587341b1f3966640320f5,
+        type: 3}
+      propertyPath: TalkAction.m_Name
+      value: Talk
+      objectReference: {fileID: 0}
+    - target: {fileID: 8081119564570743781, guid: 7f22f42f0c3587341b1f3966640320f5,
+        type: 3}
+      propertyPath: TalkAction.m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8081119564570743781, guid: 7f22f42f0c3587341b1f3966640320f5,
+        type: 3}
+      propertyPath: TalkAction.m_ExpectedControlType
+      value: Button
+      objectReference: {fileID: 0}
+    - target: {fileID: 8081119564570743781, guid: 7f22f42f0c3587341b1f3966640320f5,
+        type: 3}
+      propertyPath: TalkAction.m_SingletonActionBindings.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8081119564570743781, guid: 7f22f42f0c3587341b1f3966640320f5,
+        type: 3}
+      propertyPath: TalkAction.m_SingletonActionBindings.Array.data[0].m_Id
+      value: 8e044ea7-66c9-4925-be02-b279d0fbdc9b
+      objectReference: {fileID: 0}
+    - target: {fileID: 8081119564570743781, guid: 7f22f42f0c3587341b1f3966640320f5,
+        type: 3}
+      propertyPath: TalkAction.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Keyboard>/x
+      objectReference: {fileID: 0}
+    - target: {fileID: 8081119564570743781, guid: 7f22f42f0c3587341b1f3966640320f5,
+        type: 3}
+      propertyPath: TalkAction.m_SingletonActionBindings.Array.data[0].m_Action
+      value: Talk
+      objectReference: {fileID: 0}
     - target: {fileID: 8223561107831840980, guid: 7f22f42f0c3587341b1f3966640320f5,
         type: 3}
       propertyPath: m_Name
@@ -5983,3 +6126,4 @@ SceneRoots:
   - {fileID: 3485041770472654198}
   - {fileID: 1269459634}
   - {fileID: 753201083}
+  - {fileID: 3959125595428904743}

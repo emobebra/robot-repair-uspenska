@@ -1,3 +1,4 @@
+
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -21,6 +22,9 @@ public class PlayerController : MonoBehaviour
 
     public GameObject projectilePrefab;
     public InputAction LaunchAction;
+    public InputAction TalkAction;
+    private NonPlayerCharacter lastNonPlayerCharacter;
+
     public float launchCooldown = 0.5f;
     float launchTimer;
 
@@ -28,6 +32,8 @@ public class PlayerController : MonoBehaviour
     {
         MoveAction.Enable();
         LaunchAction.Enable();
+        TalkAction.Enable();
+
         rigidbody2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         currentHealth = maxHealth;
@@ -37,7 +43,8 @@ public class PlayerController : MonoBehaviour
     {
         move = MoveAction.ReadValue<Vector2>();
 
-        if (!Mathf.Approximately(move.x, 0.0f) || !Mathf.Approximately(move.y, 0.0f))
+        if (!Mathf.Approximately(move.x, 0.0f) ||
+            !Mathf.Approximately(move.y, 0.0f))
         {
             moveDirection.Set(move.x, move.y);
             moveDirection.Normalize();
@@ -50,6 +57,7 @@ public class PlayerController : MonoBehaviour
         if (isInvincible)
         {
             damageCooldown -= Time.deltaTime;
+
             if (damageCooldown < 0)
             {
                 isInvincible = false;
@@ -66,11 +74,52 @@ public class PlayerController : MonoBehaviour
             Launch();
             launchTimer = launchCooldown;
         }
+
+        RaycastHit2D hit = Physics2D.Raycast(
+            rigidbody2d.position + Vector2.up * 0.2f,
+            moveDirection,
+            1.5f,
+            LayerMask.GetMask("NPC"));
+
+        Debug.DrawRay(
+            rigidbody2d.position + Vector2.up * 0.2f,
+            moveDirection * 1.5f,
+            Color.red);
+
+        if (hit.collider != null)
+        {
+            NonPlayerCharacter npc =
+                hit.collider.GetComponent<NonPlayerCharacter>();
+
+            if (npc != null)
+            {
+                if (lastNonPlayerCharacter != null &&
+                    lastNonPlayerCharacter != npc)
+                {
+                    lastNonPlayerCharacter.dialogueBubble.SetActive(false);
+                }
+
+                npc.dialogueBubble.SetActive(true);
+                lastNonPlayerCharacter = npc;
+
+                FindFriend();
+            }
+        }
+        else
+        {
+            if (lastNonPlayerCharacter != null)
+            {
+                lastNonPlayerCharacter.dialogueBubble.SetActive(false);
+                lastNonPlayerCharacter = null;
+            }
+        }
     }
 
     void FixedUpdate()
     {
-        Vector2 position = (Vector2)rigidbody2d.position + move * speed * Time.deltaTime;
+        Vector2 position = (Vector2)rigidbody2d.position
+            + move * speed * Time.deltaTime;
+
         rigidbody2d.MovePosition(position);
     }
 
@@ -88,15 +137,34 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger("Hit");
         }
 
-        currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
-        UIHandler.instance.SetHealthValue(currentHealth / (float)maxHealth);
+        currentHealth = Mathf.Clamp(
+            currentHealth + amount,
+            0,
+            maxHealth);
+
+        UIHandler.instance.SetHealthValue(
+            currentHealth / (float)maxHealth);
     }
 
     void Launch()
     {
-        GameObject projectileObject = Instantiate(projectilePrefab, rigidbody2d.position + Vector2.up * 0.5f, Quaternion.identity);
-        Projectile projectile = projectileObject.GetComponent<Projectile>();
+        GameObject projectileObject = Instantiate(
+            projectilePrefab,
+            rigidbody2d.position + Vector2.up * 0.5f,
+            Quaternion.identity);
+
+        Projectile projectile =
+            projectileObject.GetComponent<Projectile>();
+
         projectile.Launch(moveDirection, 300);
         animator.SetTrigger("Launch");
+    }
+
+    void FindFriend()
+    {
+        if (TalkAction.WasPressedThisFrame())
+        {
+            UIHandler.instance.DisplayDialogue();
+        }
     }
 }
