@@ -1,19 +1,29 @@
-
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class UIHandler : MonoBehaviour
 {
-    public float CurrentHealth = 0.5f;
+    public static UIHandler instance { get; private set; }
+
+    private VisualElement m_Healthbar;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {
         UIDocument uiDocument = GetComponent<UIDocument>();
 
-        VisualElement healthBar = uiDocument.rootVisualElement
+        m_Healthbar = uiDocument.rootVisualElement
             .Q<VisualElement>("HealthBar");
 
-        healthBar.style.width =
-            Length.Percent(CurrentHealth * 100.0f);
+        SetHealthValue(1.0f);
+    }
+
+    public void SetHealthValue(float percentage)
+    {
+        m_Healthbar.style.width = Length.Percent(100 * percentage);
     }
 }
