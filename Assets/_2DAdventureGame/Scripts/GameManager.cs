@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
     EnemyController[] enemies;
     public UIHandler uiHandler;
 
+    bool gameOver = false;
+
     void Start()
     {
         enemies = FindObjectsByType<EnemyController>(
@@ -16,14 +18,20 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        if (gameOver)
+            return;
+
         if (player.health <= 0)
         {
+            gameOver = true;
             uiHandler.DisplayLoseScreen();
             Invoke(nameof(ReloadScene), 3f);
+            return;
         }
 
         if (AllEnemiesFixed())
         {
+            gameOver = true;
             uiHandler.DisplayWinScreen();
             Invoke(nameof(ReloadScene), 3f);
         }
