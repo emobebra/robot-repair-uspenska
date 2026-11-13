@@ -17,5 +17,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_2DAdventureGame/Tutorial_Demo/Demo_Scenes/Final/SugarLand_Example_Scene.unity
     guid: a86a62f58fa7649af9958b6c53bc8d28
+  - enabled: 1
+    path: Assets/Scenes/MainScene.unity
+    guid: 662c7bbbe3005a1429b9d41a46dae1fb
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
