@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -19,6 +18,7 @@ public class PlayerController : MonoBehaviour
 
     Animator animator;
     Vector2 moveDirection = new Vector2(1, 0);
+    Vector2 animationDirection = new Vector2(1, 0);
 
     public GameObject projectilePrefab;
     public InputAction LaunchAction;
@@ -46,12 +46,22 @@ public class PlayerController : MonoBehaviour
         if (!Mathf.Approximately(move.x, 0.0f) ||
             !Mathf.Approximately(move.y, 0.0f))
         {
-            moveDirection.Set(move.x, move.y);
-            moveDirection.Normalize();
+            moveDirection = move.normalized;
+
+            if (Mathf.Abs(move.x) >= Mathf.Abs(move.y))
+            {
+                animationDirection = new Vector2(
+                    Mathf.Sign(move.x), 0);
+            }
+            else
+            {
+                animationDirection = new Vector2(
+                    0, Mathf.Sign(move.y));
+            }
         }
 
-        animator.SetFloat("Look X", moveDirection.x);
-        animator.SetFloat("Look Y", moveDirection.y);
+        animator.SetFloat("Look X", animationDirection.x);
+        animator.SetFloat("Look Y", animationDirection.y);
         animator.SetFloat("Speed", move.magnitude);
 
         if (isInvincible)
@@ -118,7 +128,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         Vector2 position = (Vector2)rigidbody2d.position
-            + move * speed * Time.deltaTime;
+            + move * speed * Time.fixedDeltaTime;
 
         rigidbody2d.MovePosition(position);
     }
